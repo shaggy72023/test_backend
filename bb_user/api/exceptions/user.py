@@ -5,8 +5,8 @@ class AuthAPIError(APIError):
     pass
 
 
-class UsernameExistsAPIError(AuthAPIError):
-    code = 'username_is_exists'
+class FormValidationFailsApiError(AuthAPIError):
+    code = 'form_validation_fails'
 
 
 class WrongCredentialsAPIError(AuthAPIError):
@@ -19,3 +19,7 @@ class UserDoesNotExistAPIError(AuthAPIError):
 
 class WrongAuthorizeHeadersAPIError(AuthAPIError):
     code = 'wrong_authorize_headers'
+
+
+class WrongActivationCodeApiError(AuthAPIError):
+    code = 'wrong_activation_code'

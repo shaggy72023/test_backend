@@ -14,18 +14,17 @@ class User(APIMixin, View):
 
     def post(self, request, parameters):
         parameters = json.loads(parameters)
-        form = SignUpForm(data=parameters)
-
-        if form.is_valid():
-            user = bb_user.services.user.create(**form.cleaned_data)
-            return serialize_access_token(user)
-
-        else:
-            raise RequestValidationFailedAPIError(form.errors)
+        activation_url = parameters['email_activation_url']
+        user = bb_user.services.user.create(activation_url, parameters)
+        return serialize_access_token(user)
 
     def get(self, request, user_id, parameters):
         user = bb_user.services.user.get(request, user_id)
         return serialize(user)
+
+    def put(self, request, parameters):
+        parameters = json.loads(parameters)
+        return bb_user.services.user.activate(**parameters)
 
 
 class LoginUser(User):
