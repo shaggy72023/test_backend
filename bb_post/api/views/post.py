@@ -1,5 +1,6 @@
 from django.views.generic import View
 
+from bb_comment.api.serializers.comment import serialize_comments
 from bb_post.api.forms.post import CreateForm
 from bb_post.api.mixins import PostAPIMixin
 from bb_post.api.serializers.post import serialize as serialize_post
@@ -33,4 +34,5 @@ class Collection(APIMixin, View):
 class Single(APIMixin, PostAPIMixin, View):
 
     def get(self, request, parameters, *args, **kwargs):
-        return serialize_post(self.post)
+        serialized_post = serialize_post(self.post)
+        return serialize_comments(serialized_post, self.post_comments)

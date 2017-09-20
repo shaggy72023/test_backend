@@ -2,7 +2,7 @@ import json
 
 from django.views.generic import View
 
-from bb_user.api.forms.user import SignUpForm, LoginForm
+from bb_user.api.forms.user import LoginForm
 from utils.api.exceptions import RequestValidationFailedAPIError
 from utils.api.mixins import APIMixin
 from bb_user.api.serializers.user import serialize, serialize_access_token
