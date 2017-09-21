@@ -9,6 +9,7 @@ class Comment(models.Model):
     author = models.ForeignKey(User)
     post = models.ForeignKey(Post)
     content = models.TextField()
+    post_date = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta(object):
         app_label = 'bb_comment'

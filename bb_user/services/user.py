@@ -16,7 +16,10 @@ def create(activation_url, parameters):
     form = SignUpForm(data=parameters)
 
     if not form.is_valid():
-        raise FormValidationFailsApiError(form.errors)
+        errors_list = []
+        for error_key in form.errors:
+            errors_list.append(form.errors[error_key][0])
+        raise FormValidationFailsApiError(errors_list)
 
     user = form.save(commit=False)
     user.is_active = False
@@ -70,8 +73,11 @@ def get(request, user_id):
         raise WrongAuthorizeHeadersAPIError()
 
 
-# u - user, c - activation code
-def activate(u, c, email_activation_url):
+# u - user id, c - activation code
+def activate(u, c, email_activation_url, date=None):
+    # argument date use only for testing
+    if date is None:
+        date = datetime.datetime.utcnow().strftime('%Y%m%d')
 
     mailed_code = c
 
@@ -86,7 +92,7 @@ def activate(u, c, email_activation_url):
     if user.is_active:
         return True
 
-    key = email_activation_url + settings.SECRET_KEY + datetime.datetime.utcnow().strftime('%Y%m%d')
+    key = email_activation_url + settings.SECRET_KEY + date
     confirmation_code = hmac.new(str(user.username), key.encode('utf-8'), hashlib.sha256).digest()
     confirmation_code = confirmation_code.encode('base-64').strip().replace('+', '')
 

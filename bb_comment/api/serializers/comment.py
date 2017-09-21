@@ -8,7 +8,8 @@ def serialize_comments(serialized_post, comments):
                 'comment {}'.format(comment.id): {
                     'author_email': comment.author.email,
                     'author_username': comment.author.username,
-                    'content': comment.content
+                    'content': comment.content,
+                    'posted': str(comment.post_date)
                 }
             })
 

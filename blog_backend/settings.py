@@ -88,6 +88,6 @@ STATIC_URL = '/static/'
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'shaggy7202@gmail.com'
-EMAIL_HOST_PASSWORD = 's1593703121992sS'
+EMAIL_HOST_USER = 'testmyblogapp@gmail.com'
+EMAIL_HOST_PASSWORD = '1234567S'
 EMAIL_PORT = 587
