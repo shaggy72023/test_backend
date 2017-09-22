@@ -1,7 +1,3 @@
-import datetime
-import hashlib
-import hmac
-
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.core.mail import send_mail
@@ -10,6 +6,10 @@ from bb_user.api.exceptions.user import FormValidationFailsApiError, WrongCreden
     WrongAuthorizeHeadersAPIError, WrongActivationCodeApiError
 from bb_user.api.forms.user import SignUpForm
 from blog_backend import settings
+
+import datetime
+import hashlib
+import hmac
 
 
 def create(activation_url, parameters):

@@ -1,14 +1,14 @@
-import hashlib
-import hmac
-import datetime
-
 from django.contrib.auth.models import User
-
 from django.test import TestCase, RequestFactory
+
 from bb_comment.services.comment import create
 from bb_post.api.exceptions import PostUnknownAPIError
 from bb_post.models import Post
 from bb_user.api.exceptions.user import UserDoesNotExistAPIError
+
+import hashlib
+import hmac
+import datetime
 
 
 class CommentCreationTestCase(TestCase):

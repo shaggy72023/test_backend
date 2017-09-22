@@ -1,13 +1,13 @@
-import hashlib
-import hmac
-import datetime
-
 from django.contrib.auth.models import User
 from django.test import TestCase, RequestFactory
 
 from bb_user.api.exceptions.user import FormValidationFailsApiError, WrongActivationCodeApiError, UserDoesNotExistAPIError, \
     WrongAuthorizeHeadersAPIError, WrongCredentialsAPIError
 from bb_user.services.user import create, activate, get, login
+
+import hashlib
+import hmac
+import datetime
 
 
 class UserCreationTestCase(TestCase):

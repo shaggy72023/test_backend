@@ -1,9 +1,9 @@
-import bb_user.services.user
-
 from bb_comment.api.forms.comment import CommentForm
 from bb_post.api.exceptions import PostUnknownAPIError
 from bb_post.models import Post
 from bb_user.api.exceptions.user import FormValidationFailsApiError
+
+import bb_user.services.user
 
 
 def create(request, parameters):

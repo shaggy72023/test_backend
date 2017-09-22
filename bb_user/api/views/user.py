@@ -1,5 +1,3 @@
-import json
-
 from django.views.generic import View
 
 from bb_user.api.forms.user import LoginForm
@@ -8,6 +6,7 @@ from utils.api.mixins import APIMixin
 from bb_user.api.serializers.user import serialize, serialize_access_token
 
 import bb_user.services.user
+import json
 
 
 class User(APIMixin, View):

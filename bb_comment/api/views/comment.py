@@ -1,9 +1,9 @@
-import bb_comment.services.comment
-import json
-
 from django.views.generic import View
 
 from utils.api.mixins import APIMixin
+
+import bb_comment.services.comment
+import json
 
 
 class Comment(APIMixin, View):
